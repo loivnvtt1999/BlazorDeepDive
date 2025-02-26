@@ -1,4 +1,6 @@
 ﻿@page "/servers"
+@page "/servers/back_from/{cityName}"
+@inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
 <h3>Servers</h3>
@@ -10,13 +12,17 @@
 <SearchBarComponent style="width:200px;" @rendermode="InteractiveServer" @ref="searchBarComponent" SearchFilterCallback="HandleSearchServer"></SearchBarComponent>
 
 <CascadingValue Name="SelectedCity" Value="@selectedCity">
-    <ServerListComponent @rendermode="InteractiveServer" CityName="@selectedCity" SearchFilter="@serverFilter"></ServerListComponent>
+    <ServerListComponent @rendermode="InteractiveServer" CityName="@selectedCity" SearchFilter="@serverFilter" AddParameter="@index.ToString()"></ServerListComponent>
 </CascadingValue>
 <p>
     <a href="/servers/add" class="btn btn-primary">Add Server</a>
+    <button type="button" class="btn btn-info" onclick="@(()=>{index++;})">Send Parameter</button>
 </p>
 
 @code {
+    public int index { get; set; } = 0;
+    [Parameter]
+    public string? CityName { get; set; }
     private string selectedCity = "Toronto";
     private List<Server> listServer = ServerRepository.GetServersByCity("Toronto");
     private string serverFilter = string.Empty;
@@ -39,5 +45,17 @@
     {
         this.serverFilter = filter;
         cityListComponent?.ClearSelectedCity();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (NavigationManager.Uri.Contains("back_from") && !string.IsNullOrEmpty(CityName))
+            {
+                selectedCity = CityName;
+                StateHasChanged();
+            }
+        }
     }
 }

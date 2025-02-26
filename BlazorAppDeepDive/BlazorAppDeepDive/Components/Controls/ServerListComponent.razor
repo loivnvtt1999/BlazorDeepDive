@@ -27,11 +27,11 @@
             <ServerComponent Server="@server"></ServerComponent>
         </Row>
         <Footer>
-        <tfoot>
-            <tr>
-                <td colspan="6">Total Servers: @listServer.Count</td>
-            </tr>
-        </tfoot>
+            <tfoot>
+                <tr>
+                    <td colspan="6">Total Servers: @listServer.Count</td>
+                </tr>
+            </tfoot>
         </Footer>
     </RepeaterComponent>
 </table>
@@ -43,7 +43,20 @@
     [Parameter]
     public string? SearchFilter { get; set; }
 
+    [Parameter]
+    public string? AddParameter { get; set; }
+
     public List<Server> listServer = new List<Server>();
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        if(parameters.TryGetValue<string>("CityName", out var cityName))
+        {
+            if (cityName != CityName)
+                base.SetParametersAsync(parameters);
+        }
+        return Task.CompletedTask;
+    }
 
     protected override void OnParametersSet()
     {

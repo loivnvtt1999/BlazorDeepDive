@@ -1,5 +1,9 @@
 ﻿@page "/servers/edit/{id:int}"
+
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
 <h3>Edit Server</h3>
 @if(server!= null)
 {
@@ -49,13 +53,23 @@
     {
         server ??= ServerRepository.GetServerById(Id);
     }
+
+    private async Task OnBeforeInternalNavigation(LocationChangingContext context)
+    {
+        var isConfirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you want to leave this pages?");
+        if(!isConfirmed)
+        {
+            context.PreventNavigation();
+        }
+    }
+
     private void Submit()
     {
         try{
             if (server != null)
             {
                 ServerRepository.UpdateServer(server.ServerId, server);
-                NavigationManager.NavigateTo("/servers");
+                NavigationManager.NavigateTo($"/servers/back_from/{server.City}");
             }
         }
         catch (Exception ex)
