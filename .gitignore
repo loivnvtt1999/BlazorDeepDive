@@ -30,3 +30,14 @@ tools/*
 /Build/**/obj/
 publish
 *.metaproj*
+# Ignore build output
+**/obj/
+**/bin/
+
+# Ignore compiled executables
+**/apphost.exe
+
+# Ignore generated files
+**/*.AssemblyInfo.cs
+**/*.AssemblyInfoInputs.cache
+**/*.FileListAbsolute.txt
