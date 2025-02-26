@@ -1,0 +1,60 @@
+﻿@inject NavigationManager NavigationManager
+@*     <Virtualize Items="listServer" Context="server">
+        <ServerComponent Server="@server"></ServerComponent>
+    </Virtualize> *@
+
+@*     <RepeaterComponent Items="listServer">
+        <Row Context="server">
+            <ServerComponent Server="@server"></ServerComponent>
+        </Row>
+    </RepeaterComponent> *@
+
+<table class="table table-striped">
+    <RepeaterComponent Items="listServer">
+        <Header>
+            <thread>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>People Online</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thread>
+        </Header>
+        <Row Context="server">
+            <ServerComponent Server="@server"></ServerComponent>
+        </Row>
+        <Footer>
+        <tfoot>
+            <tr>
+                <td colspan="6">Total Servers: @listServer.Count</td>
+            </tr>
+        </tfoot>
+        </Footer>
+    </RepeaterComponent>
+</table>
+
+@code {
+    [Parameter]
+    public string? CityName { get; set; }
+
+    [Parameter]
+    public string? SearchFilter { get; set; }
+
+    public List<Server> listServer = new List<Server>();
+
+    protected override void OnParametersSet()
+    {
+        if (!String.IsNullOrEmpty(SearchFilter) /*&& !String.IsNullOrEmpty(CityName)*/)
+        {
+            //listServer = ServerRepository.SearchServers(SearchFilter).Where(x=>x.City.Equals(CityName)).ToList();
+            listServer = ServerRepository.SearchServers(SearchFilter);
+        }
+        else
+        {
+            listServer = ServerRepository.GetServersByCity(CityName ?? "Toronto");
+        }
+    }
+}

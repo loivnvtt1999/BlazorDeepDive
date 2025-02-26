@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorDeepDive.bundle.scp.css",
+      "PackagePath": "staticwebassets\\BlazorDeepDive.sefoauu4n0.bundle.scp.css"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\images\\Calgary.png",
+      "PackagePath": "staticwebassets\\images\\Calgary.png"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\images\\Halifax.png",
+      "PackagePath": "staticwebassets\\images\\Halifax.png"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\images\\Ottawa.png",
+      "PackagePath": "staticwebassets\\images\\Ottawa.png"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\images\\montreal.png",
+      "PackagePath": "staticwebassets\\images\\montreal.png"
+    },
+    {
+      "Id": "E:\\PersonalProject\\BlazorApp\\BlazorAppDeepDive\\BlazorAppDeepDive\\wwwroot\\images\\toronto.png",
+      "PackagePath": "staticwebassets\\images\\toronto.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorDeepDive.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorDeepDive.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BlazorDeepDive.props",
+      "PackagePath": "build\\BlazorDeepDive.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorDeepDive.props",
+      "PackagePath": "buildMultiTargeting\\BlazorDeepDive.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BlazorDeepDive.props",
+      "PackagePath": "buildTransitive\\BlazorDeepDive.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

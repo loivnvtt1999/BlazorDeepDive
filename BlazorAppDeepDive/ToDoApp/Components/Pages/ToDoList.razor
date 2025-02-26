@@ -1,0 +1,21 @@
+﻿@page "/todolist"
+@inject NavigationManager NavigationManager;
+@rendermode InteractiveServer
+<h3>To Do</h3>
+<br/>
+
+<button class="btn btn-primary" type="button" @onclick="AddTask">Add Task</button>
+@if(listToDoItems!=null && listToDoItems.Any()){
+     <ul class="list-unstyled">
+         <ToDoListComponent ListToDoItems="listToDoItems"></ToDoListComponent>
+    </ul>
+}
+
+@code {
+    private List<ToDoItem> listToDoItems = ToDoItemsRepository.GetItems();
+    private void AddTask()
+    {
+        ToDoItemsRepository.AddItem(new ToDoItem() { Name = "New Task" });
+        listToDoItems = ToDoItemsRepository.GetItems();
+    }
+}

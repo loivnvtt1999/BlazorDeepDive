@@ -1,0 +1,9 @@
+﻿
+<Virtualize Items="ListToDoItems" Context="item">
+    <ToDoItemComponent Item="item" />
+</Virtualize>
+
+@code {
+    [Parameter]
+    public List<ToDoItem>? ListToDoItems { get; set; }
+}
