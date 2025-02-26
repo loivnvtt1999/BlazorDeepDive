@@ -1,6 +1,7 @@
 ﻿@page "/servername"
 @rendermode InteractiveServer
-@inject SessionStorage sessionStorage
+@* @inject SessionStorage sessionStorage *@
+@inject ContainerStorage containerStorage
 @inject NavigationManager NavigationManager
 
 <h3>Server Name</h3>
@@ -46,7 +47,7 @@
         }
     }
 
-    private async Task GoNext()
+    private void GoNext()
     {
 
         if (string.IsNullOrWhiteSpace(server.Name))
@@ -55,7 +56,7 @@
         }
         else
         {
-            await sessionStorage.SetServerAsync(server);
+            containerStorage.SetServer(server);
             NavigationManager.NavigateTo($"/cityname");
         }
 

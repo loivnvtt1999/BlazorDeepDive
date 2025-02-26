@@ -3,11 +3,11 @@
 @* @using ServerManagement.StateStore *@
 
 @rendermode InteractiveServer
-@inject SessionStorage sessionStorage;
+@* @inject SessionStorage sessionStorage; *@
 @inherits ComponentBase
 
 @inject NavigationManager NavigationManager
-@* @inject ContainerStorage containerStorage *@
+@inject ContainerStorage containerStorage
 
 <h3>City Name</h3>
 <br />
@@ -45,16 +45,16 @@
         base.OnInitialized();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            server = await sessionStorage.GetServerAsync();
+            server = containerStorage.GetServer();
             StateHasChanged();
         }
     }
 
-    private async Task GoNext()
+    private void GoNext()
     {
         if (string.IsNullOrEmpty(server.Name))
         {
@@ -68,7 +68,7 @@
         }
         else
         {
-            await sessionStorage.SetServerAsync(server);
+            containerStorage.SetServer(server);
             NavigationManager.NavigateTo($"/serverstatus");
         }
     }

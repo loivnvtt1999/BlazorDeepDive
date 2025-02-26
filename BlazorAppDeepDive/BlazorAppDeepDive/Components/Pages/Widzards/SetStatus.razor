@@ -1,7 +1,8 @@
 ﻿@page "/serverstatus"
 
 @rendermode InteractiveServer
-@inject SessionStorage sessionStorage
+@* @inject SessionStorage sessionStorage *@
+@inject ContainerStorage containerStorage
 @inject NavigationManager NavigationManager
 
 <h3>Server Status</h3>
@@ -49,16 +50,16 @@
     public bool IsOnline { get; set; }
     private string? errorMessage;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            server = await this.sessionStorage.GetServerAsync();
+            server = this.containerStorage.GetServer();
             StateHasChanged();
         }
     }
 
-    private async Task Save()
+    private void Save()
     {
         // if (string.IsNullOrEmpty(ServerName))
         // {
@@ -80,7 +81,7 @@
         //     };
         if(server is not null)
         {
-            await sessionStorage.SetServerAsync(server);
+            containerStorage.SetServer(server);
             ServerRepository.AddServer(server);
         }
         NavigationManager.NavigateTo($"/servers/back_from/{this.server.City}");

@@ -12,6 +12,7 @@ namespace BlazorDeepDive
             // Add services to the container.
             builder.Services.AddRazorComponents().AddInteractiveServerComponents();
             builder.Services.AddTransient<SessionStorage>();
+            builder.Services.AddScoped<ContainerStorage>();
 
             var app = builder.Build();
 
