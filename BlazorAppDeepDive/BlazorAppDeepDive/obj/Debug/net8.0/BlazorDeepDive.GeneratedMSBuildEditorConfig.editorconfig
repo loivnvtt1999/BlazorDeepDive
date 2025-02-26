@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb250cm9sc1xTZXJ2ZXJMaXN0Q29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/PersonalProject/BlazorApp/BlazorAppDeepDive/BlazorAppDeepDive/Components/Pages/AddEditServer.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZGRFZGl0U2VydmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/PersonalProject/BlazorApp/BlazorAppDeepDive/BlazorAppDeepDive/Components/Pages/AddServer.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZGRTZXJ2ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,6 +78,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/PersonalProject/BlazorApp/BlazorAppDeepDive/BlazorAppDeepDive/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PersonalProject/BlazorApp/BlazorAppDeepDive/BlazorAppDeepDive/Components/Pages/Widzards/SetCityName.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXaWR6YXJkc1xTZXRDaXR5TmFtZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PersonalProject/BlazorApp/BlazorAppDeepDive/BlazorAppDeepDive/Components/Pages/Widzards/SetServerName.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXaWR6YXJkc1xTZXRTZXJ2ZXJOYW1lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/PersonalProject/BlazorApp/BlazorAppDeepDive/BlazorAppDeepDive/Components/Pages/Widzards/SetStatus.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXaWR6YXJkc1xTZXRTdGF0dXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/PersonalProject/BlazorApp/BlazorAppDeepDive/BlazorAppDeepDive/Components/Routes.razor]
