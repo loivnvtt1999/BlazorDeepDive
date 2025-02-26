@@ -1,0 +1,88 @@
+﻿@page "/serverstatus"
+
+@rendermode InteractiveServer
+@inject SessionStorage sessionStorage
+@inject NavigationManager NavigationManager
+
+<h3>Server Status</h3>
+<br />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert alert-danger">
+        @errorMessage
+    </div>
+}
+
+
+@if(server is not null){
+    <FieldComponent Label="Server Status">
+        <Control>
+            @if (IsOnline)
+            {
+                <input type="checkbox"
+                       @bind-value="server.IsOnline"
+                       checked class="form-check-input"></input>
+            }
+            else
+            {
+                <input type="checkbox"
+                       @bind-value="server.IsOnline"
+                       class="form-check-input"></input>
+            }
+
+        </Control>
+    </FieldComponent>
+    <br />
+    <button type="button" class="btn btn-primary" @onclick="Save">Save</button>
+}
+
+
+@code {
+    [SupplyParameterFromQuery(Name = "servername")]
+    public string ServerName { get; set; }
+
+    [SupplyParameterFromQuery(Name = "cityname")]
+    public string CityName { get; set; }
+
+    private Server? server;
+
+    public bool IsOnline { get; set; }
+    private string? errorMessage;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            server = await this.sessionStorage.GetServerAsync();
+            StateHasChanged();
+        }
+    }
+
+    private async Task Save()
+    {
+        // if (string.IsNullOrEmpty(ServerName))
+        // {
+        //     this.errorMessage = "Server Name is required.";
+        //     return;
+        // }
+
+        // if (string.IsNullOrEmpty(CityName))
+        // {
+        //     this.errorMessage = "City Name is required.";
+        //     return;
+        // }
+
+        // var server = new Server
+        //     {
+        //         Name = ServerName,
+        //         City = CityName,
+        //         IsOnline = IsOnline
+        //     };
+        if(server is not null)
+        {
+            await sessionStorage.SetServerAsync(server);
+            ServerRepository.AddServer(server);
+        }
+        NavigationManager.NavigateTo($"/servers/back_from/{this.server.City}");
+    }
+}

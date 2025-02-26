@@ -1,4 +1,5 @@
 using BlazorDeepDive.Components;
+using BlazorDeepDive.StateStore;
 
 namespace BlazorDeepDive
 {
@@ -10,6 +11,7 @@ namespace BlazorDeepDive
 
             // Add services to the container.
             builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+            builder.Services.AddTransient<SessionStorage>();
 
             var app = builder.Build();
 
