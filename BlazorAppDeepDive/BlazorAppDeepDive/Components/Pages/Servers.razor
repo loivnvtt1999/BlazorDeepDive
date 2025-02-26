@@ -15,7 +15,7 @@
     <ServerListComponent @rendermode="InteractiveServer" CityName="@selectedCity" SearchFilter="@serverFilter" AddParameter="@index.ToString()"></ServerListComponent>
 </CascadingValue>
 <p>
-    <a href="/servers/add" class="btn btn-primary">Add Server</a>
+    <a href="/server" class="btn btn-primary">Add Server</a>
     <button type="button" class="btn btn-info" onclick="@(()=>{index++;})">Send Parameter</button>
 </p>
 
