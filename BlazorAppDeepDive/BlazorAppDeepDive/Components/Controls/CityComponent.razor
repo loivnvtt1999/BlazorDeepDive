@@ -1,8 +1,17 @@
-﻿<div class="col">
+﻿@inject TorontoOnlineServerStore TorontoOnlineServersStore
+<div class="col">
     <div class="card @(SelectedCity.Equals(City, StringComparison.OrdinalIgnoreCase) ? "border-primary" : "")">
         <img class="img-fluid" src="@($"images/{City}.png")" alt="...">
         <div class="card-body">
             <button type="button" class="btn btn-primary" @onclick=@(()=>{SelectCity(City);})>@City</button>
+        </div>
+        <div>
+            @if (City.Equals("Toronto", StringComparison.OrdinalIgnoreCase))
+            {
+                <div class="card-footer text-muted">
+                    <p>Number of servers online: @numberServersOnlineToronto</p>
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -18,8 +27,26 @@
     [Parameter]
     public EventCallback<string> SelectedCityCallback { get; set; }
 
+    public int numberServersOnlineToronto;
+
     private void SelectCity(string city)
     {
         SelectedCityCallback.InvokeAsync(city);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            OnServerStatusChange();
+            // TorontoOnlineServersStore.AddStateChangeListeners(OnServerStatusChange);
+            StateHasChanged();
+        }
+    }
+
+    private void OnServerStatusChange()
+    {
+        numberServersOnlineToronto = TorontoOnlineServersStore.GetNumberOfOnlineServers();
+        StateHasChanged();
     }
 }

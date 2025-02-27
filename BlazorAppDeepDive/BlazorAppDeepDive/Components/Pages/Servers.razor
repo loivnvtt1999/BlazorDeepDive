@@ -1,6 +1,7 @@
 ﻿@page "/servers"
 @page "/servers/back_from/{cityName}"
 @inject NavigationManager NavigationManager
+@inject TorontoOnlineServerStore TorontoOnlineServersStore
 @rendermode InteractiveServer
 
 <h3>Servers</h3>
@@ -29,7 +30,7 @@
     private CityListComponent cityListComponent;
     private SearchBarComponent searchBarComponent;
 
-    private void HandleSearch() 
+    private void HandleSearch()
     {
         this.listServer = ServerRepository.SearchServers(serverFilter);
     }
@@ -56,6 +57,14 @@
                 selectedCity = CityName;
                 StateHasChanged();
             }
+
+            var serverToronto = ServerRepository.GetServersByCity("Toronto");
+            var serverMontreal = ServerRepository.GetServersByCity("Montreal");
+            if (serverToronto is not null)
+            {
+                TorontoOnlineServersStore.SetNumberOfOnlineServers(serverToronto.Count(x => x.IsOnline));
+            }
         }
     }
 }
+

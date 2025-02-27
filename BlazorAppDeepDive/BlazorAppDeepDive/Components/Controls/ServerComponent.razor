@@ -1,5 +1,6 @@
 ﻿@rendermode InteractiveServer
 @inject NavigationManager NavigationManager
+@inject TorontoOnlineServerStore TorontoOnlineServersStore
 @if (Server != null)
 {
     <tr style="background-color: @GetBackgroundColor()">
@@ -29,16 +30,16 @@
             {
                 <button type="button"
                         class="btn btn-outline-danger"
-                        @onclick="@(()=> {ChangeStatus();})">
+                        @onclick="@(()=> {ChangeStatus(false);})">
                     Turn Off
                 </button>
             }
             else
             {
                 <button type="button"
-                        class="btn btn-outline-success"
-                        @onclick="@(()=> {ChangeStatus();})">
-                    Turn On
+                        class="btn btn-outline-danger"
+                        @onclick="@(()=> {ChangeStatus(true);})">
+                    Turn Off
                 </button>
             }
             &nbsp;
@@ -63,11 +64,23 @@
     [CascadingParameter(Name = "SelectedCity")]
     public string? SelectedCity { get; set; }
 
-    private void ChangeStatus()
+    private void ChangeStatus(bool status)
     {
         if (Server != null)
         {
-            Server.IsOnline = !Server.IsOnline;
+            if (this.Server.City == "Toronto")
+            {
+                int num = TorontoOnlineServersStore.GetNumberOfOnlineServers();
+                if(status)
+                {
+                    TorontoOnlineServersStore.SetNumberOfOnlineServers(num + 1);
+                }
+                else if (num >= 1)
+                {
+                    TorontoOnlineServersStore.SetNumberOfOnlineServers(num - 1);
+                }
+            }
+            Server.IsOnline = status;
         }
     }
 

@@ -13,6 +13,7 @@ namespace BlazorDeepDive
             builder.Services.AddRazorComponents().AddInteractiveServerComponents();
             builder.Services.AddTransient<SessionStorage>();
             builder.Services.AddScoped<ContainerStorage>();
+            builder.Services.AddScoped<TorontoOnlineServerStore>();
 
             var app = builder.Build();
 
