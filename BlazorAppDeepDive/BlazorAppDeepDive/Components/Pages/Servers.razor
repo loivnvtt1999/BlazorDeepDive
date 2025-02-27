@@ -2,6 +2,10 @@
 @page "/servers/back_from/{cityName}"
 @inject NavigationManager NavigationManager
 @inject TorontoOnlineServerStore TorontoOnlineServersStore
+@inject MontrealOnlineServersStore MontrealOnlineServersStore
+@inject OttawaOnlineServersStore OttawaOnlineServersStore
+@inject CalgaryOnlineServersStore CalgaryOnlineServersStore
+@inject HalifaxOnlineServersStore HalifaxOnlineServersStore
 @rendermode InteractiveServer
 
 <h3>Servers</h3>
@@ -60,9 +64,32 @@
 
             var serverToronto = ServerRepository.GetServersByCity("Toronto");
             var serverMontreal = ServerRepository.GetServersByCity("Montreal");
+            var serverOttawa = ServerRepository.GetServersByCity("Ottawa");
+            var serverCalgary = ServerRepository.GetServersByCity("Calgary");
+            var serverHalifax = ServerRepository.GetServersByCity("Halifax");
             if (serverToronto is not null)
             {
-                TorontoOnlineServersStore.SetNumberOfOnlineServers(serverToronto.Count(x => x.IsOnline));
+                TorontoOnlineServersStore.SetNumbersServersOnline(serverToronto.Count(x => x.IsOnline));
+            }
+
+            if (serverMontreal is not null)
+            {
+                MontrealOnlineServersStore.SetNumbersServersOnline(serverMontreal.Count(x => x.IsOnline));
+            }
+
+            if (serverOttawa is not null)
+            {
+                OttawaOnlineServersStore.SetNumbersServersOnline(serverOttawa.Count(x => x.IsOnline));
+            }
+
+            if (serverCalgary is not null)
+            {
+                CalgaryOnlineServersStore.SetNumbersServersOnline(serverCalgary.Count(x => x.IsOnline));
+            }
+
+            if (serverHalifax is not null)
+            {
+                HalifaxOnlineServersStore.SetNumbersServersOnline(serverHalifax.Count(x => x.IsOnline));
             }
         }
     }

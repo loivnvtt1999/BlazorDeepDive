@@ -14,6 +14,10 @@ namespace BlazorDeepDive
             builder.Services.AddTransient<SessionStorage>();
             builder.Services.AddScoped<ContainerStorage>();
             builder.Services.AddScoped<TorontoOnlineServerStore>();
+            builder.Services.AddScoped<HalifaxOnlineServersStore>();
+            builder.Services.AddScoped<MontrealOnlineServersStore>();
+            builder.Services.AddScoped<CalgaryOnlineServersStore>();
+            builder.Services.AddScoped<OttawaOnlineServersStore>();
 
             var app = builder.Build();
 
