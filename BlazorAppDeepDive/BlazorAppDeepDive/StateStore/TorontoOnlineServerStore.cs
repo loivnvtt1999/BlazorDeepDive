@@ -2,13 +2,17 @@
 {
     public class TorontoOnlineServerStore : Observer
     {
-        private int _numberOfOnlineServers;
-        public int GetNumberOfOnlineServers() => _numberOfOnlineServers;
+        private int _numServersOnline;
 
-        public void SetNumberOfOnlineServers(int numberOfOnlineServers)
+        public int GetNumberServersOnline()
         {
-            _numberOfOnlineServers = numberOfOnlineServers;
-            BroadcastStateChange();
+            return _numServersOnline;
+        }
+
+        public void SetNumbersServersOnline(int number)
+        {
+            _numServersOnline = number;
+            base.BroadcastStateChange();
         }
     }
 }
