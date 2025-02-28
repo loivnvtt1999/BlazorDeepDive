@@ -1,5 +1,7 @@
 using BlazorDeepDive.Components;
+using BlazorDeepDive.Data;
 using BlazorDeepDive.StateStore;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorDeepDive
 {
@@ -18,7 +20,7 @@ namespace BlazorDeepDive
             builder.Services.AddScoped<MontrealOnlineServersStore>();
             builder.Services.AddScoped<CalgaryOnlineServersStore>();
             builder.Services.AddScoped<OttawaOnlineServersStore>();
-
+            builder.Services.AddDbContextFactory<ServerManagementContext>(options => options.(builder.Configuration.GetConnectionString("DefaultConnection")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

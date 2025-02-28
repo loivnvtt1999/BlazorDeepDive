@@ -1,0 +1,26 @@
+﻿@page "/browser_wasm_2"
+@inject IJSRuntime JSRuntime
+@inject ContainerStorage ContainerStorage
+@rendermode InteractiveServer
+<h3>Browser Storage Step2</h3>
+<br />
+<br />
+<b>Data from Browser Storage: @data</b>
+
+@code {
+    private string data = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    override protected async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            data = ContainerStorage.GetMessage();
+            StateHasChanged();
+        }
+    }
+}
