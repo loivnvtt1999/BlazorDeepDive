@@ -6,6 +6,7 @@
 @inject OttawaOnlineServersStore OttawaOnlineServersStore
 @inject CalgaryOnlineServersStore CalgaryOnlineServersStore
 @inject HalifaxOnlineServersStore HalifaxOnlineServersStore
+@inject IServersEFCoreRepository ServersEFCoreRepository
 @rendermode InteractiveServer
 
 <h3>Servers</h3>
@@ -29,14 +30,20 @@
     [Parameter]
     public string? CityName { get; set; }
     private string selectedCity = "Toronto";
-    private List<Server> listServer = ServerRepository.GetServersByCity("Toronto");
+    private List<Server> listServer;
     private string serverFilter = string.Empty;
     private CityListComponent cityListComponent;
     private SearchBarComponent searchBarComponent;
 
+    protected override void OnInitialized()
+    {
+        listServer = ServersEFCoreRepository.GetServersByCity("Toronto");
+        base.OnInitialized();
+    }
+
     private void HandleSearch()
     {
-        this.listServer = ServerRepository.SearchServers(serverFilter);
+        this.listServer = ServersEFCoreRepository.SearchServers(serverFilter);
     }
 
     private void HandleSelectedCityCallback(string city)
@@ -62,11 +69,11 @@
                 StateHasChanged();
             }
 
-            var serverToronto = ServerRepository.GetServersByCity("Toronto");
-            var serverMontreal = ServerRepository.GetServersByCity("Montreal");
-            var serverOttawa = ServerRepository.GetServersByCity("Ottawa");
-            var serverCalgary = ServerRepository.GetServersByCity("Calgary");
-            var serverHalifax = ServerRepository.GetServersByCity("Halifax");
+            var serverToronto = ServersEFCoreRepository.GetServersByCity("Toronto");
+            var serverMontreal = ServersEFCoreRepository.GetServersByCity("Montreal");
+            var serverOttawa = ServersEFCoreRepository.GetServersByCity("Ottawa");
+            var serverCalgary = ServersEFCoreRepository.GetServersByCity("Calgary");
+            var serverHalifax = ServersEFCoreRepository.GetServersByCity("Halifax");
             if (serverToronto is not null)
             {
                 TorontoOnlineServersStore.SetNumbersServersOnline(serverToronto.Count(x => x.IsOnline));

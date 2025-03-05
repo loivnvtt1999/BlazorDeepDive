@@ -1,4 +1,5 @@
 ﻿@inject NavigationManager NavigationManager
+@inject IServersEFCoreRepository ServersEFCoreRepository
 @*     <Virtualize Items="listServer" Context="server">
         <ServerComponent Server="@server"></ServerComponent>
     </Virtualize> *@
@@ -63,11 +64,11 @@
         if (!String.IsNullOrEmpty(SearchFilter) /*&& !String.IsNullOrEmpty(CityName)*/)
         {
             //listServer = ServerRepository.SearchServers(SearchFilter).Where(x=>x.City.Equals(CityName)).ToList();
-            listServer = ServerRepository.SearchServers(SearchFilter);
+            listServer = ServersEFCoreRepository.SearchServers(SearchFilter);
         }
         else
         {
-            listServer = ServerRepository.GetServersByCity(CityName ?? "Toronto");
+            listServer = ServersEFCoreRepository.GetServersByCity(CityName ?? "Toronto");
         }
     }
 }

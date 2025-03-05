@@ -15,7 +15,7 @@
         await base.OnInitializedAsync();
     }
 
-    override protected async Task OnAfterRenderAsync(bool firstRender)
+    override protected void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {

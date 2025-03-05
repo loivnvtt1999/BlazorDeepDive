@@ -1,6 +1,7 @@
 ﻿@page "/servers/edit/{id:int}"
 
 @inject NavigationManager NavigationManager
+@inject IServersEFCoreRepository ServersEFCoreRepository
 @inject IJSRuntime JSRuntime
 
 <NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
@@ -51,7 +52,7 @@
 
     protected override void OnParametersSet()
     {
-        server ??= ServerRepository.GetServerById(Id);
+        server ??= ServersEFCoreRepository.GetServerById(Id);
     }
 
     private async Task OnBeforeInternalNavigation(LocationChangingContext context)
@@ -68,7 +69,7 @@
         try{
             if (server != null)
             {
-                ServerRepository.UpdateServer(server.ServerId, server);
+                ServersEFCoreRepository.UpdateServer(server.ServerId, server);
                 NavigationManager.NavigateTo($"/servers/back_from/{server.City}");
             }
         }

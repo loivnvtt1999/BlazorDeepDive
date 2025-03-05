@@ -3,6 +3,7 @@
 @rendermode InteractiveServer
 @* @inject SessionStorage sessionStorage *@
 @inject ContainerStorage containerStorage
+@inject IServersEFCoreRepository ServersEFCoreRepository
 @inject NavigationManager NavigationManager
 
 <h3>Server Status</h3>
@@ -82,7 +83,7 @@
         if(server is not null)
         {
             containerStorage.SetServer(server);
-            ServerRepository.AddServer(server);
+            ServersEFCoreRepository.AddServer(server);
         }
         NavigationManager.NavigateTo($"/servers/back_from/{this.server.City}");
     }

@@ -5,6 +5,8 @@
 @inject OttawaOnlineServersStore OttawaOnlineServersStore
 @inject CalgaryOnlineServersStore CalgaryOnlineServersStore
 @inject HalifaxOnlineServersStore HalifaxOnlineServersStore
+@inject IServersEFCoreRepository ServersEFCoreRepository
+
 @if (Server != null)
 {
     <tr style="background-color: @GetBackgroundColor()">
@@ -139,7 +141,7 @@
     {
         if (id > 0)
         {
-            ServerRepository.DeleteServer(id);
+            ServersEFCoreRepository.DeleteServer(id);
             NavigationManager.NavigateTo("/servers", true);
         }
     }

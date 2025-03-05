@@ -1,6 +1,7 @@
 ﻿@page "/server/{id:int?}"
 @using Microsoft.AspNetCore.Authorization
 @inject NavigationManager NavigationManager
+@inject IServersEFCoreRepository ServersEFCoreRepository
 
 @if (Id.HasValue)
 {
@@ -74,7 +75,7 @@ else
     protected override void OnParametersSet()
     {
         if (this.Id.HasValue)
-            server ??= ServerRepository.GetServerById(this.Id.Value);
+            server ??= ServersEFCoreRepository.GetServerById(this.Id.Value);
         else
             server ??= new Server() { IsOnline = false };
 
@@ -88,9 +89,9 @@ else
         if (server != null)
         {
             if (this.Id.HasValue)
-                ServerRepository.UpdateServer(server.ServerId, server);
+                ServersEFCoreRepository.UpdateServer(server.ServerId, server);
             else
-                ServerRepository.AddServer(server);
+                ServersEFCoreRepository.AddServer(server);
         }
 
         NavigationManager.NavigateTo($"/servers/back_from/{this.server?.City}");

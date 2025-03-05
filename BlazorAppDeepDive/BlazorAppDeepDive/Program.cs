@@ -1,5 +1,6 @@
 using BlazorDeepDive.Components;
 using BlazorDeepDive.Data;
+using BlazorDeepDive.Models;
 using BlazorDeepDive.StateStore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
@@ -25,6 +26,7 @@ namespace BlazorDeepDive
             builder.Services.AddScoped<MontrealOnlineServersStore>();
             builder.Services.AddScoped<CalgaryOnlineServersStore>();
             builder.Services.AddScoped<OttawaOnlineServersStore>();
+            builder.Services.AddTransient<IServersEFCoreRepository, ServersEFCoreRepository>();
 
             var app = builder.Build();
 

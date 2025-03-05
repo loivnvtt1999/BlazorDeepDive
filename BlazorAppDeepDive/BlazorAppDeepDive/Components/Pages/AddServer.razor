@@ -1,5 +1,7 @@
 ﻿@page "/servers/add"
 @inject NavigationManager NavigationManager
+@inject IServersEFCoreRepository ServersEFCoreRepository
+
 <h3>Add Server</h3>
 <br />
 
@@ -48,7 +50,7 @@
     private void Submit()
     {
         if (server != null){
-            ServerRepository.AddServer(server);
+            ServersEFCoreRepository.AddServer(server);
             NavigationManager.NavigateTo("/servers");
         }
     }
